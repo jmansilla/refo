@@ -1,6 +1,9 @@
 [tool.poetry]
-name = "RefO"
-version = "0.13.2"
+name = "FenixRefO"
+packages = [
+    {include = "refo"},
+]
+version = "0.13.1"
 description = "Regular expressions for objects"
 authors = ["Rafael Carrascosa <rafacarrascosa@gmail.com>", "Javier Mansilla <javimansilla@gmail.com>"]
 readme = "README.md"

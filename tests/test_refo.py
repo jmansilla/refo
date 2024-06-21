@@ -16,7 +16,7 @@ def isprime(x):
     if x < 2:
         return False
     top = int(math.sqrt(x))
-    for i in xrange(2, top + 1):
+    for i in range(2, top + 1):
         if x % i == 0:
             return False
     return True
@@ -41,7 +41,7 @@ def path_function(x):
 
 
 class TestRefoModule(unittest.TestCase):
-    seq = xrange(10000)
+    seq = range(10000)
     a = refo.Predicate(isprime)
     b = refo.Predicate(lambda x: not isprime(x))
     x = refo.Predicate(path_function(1))
@@ -58,7 +58,7 @@ class TestRefoModule(unittest.TestCase):
     def _eq_list_n_stuff(self, xs, strxs):
         xs = [x.span() for x in xs]
         strxs = [x.span() for x in strxs]
-        self.assert_(xs == strxs)
+        self.assertEqual(xs, strxs)
 
     def test_match1(self):
         regexptn = self.b + self.b + self.a + self.a + self.b
@@ -135,7 +135,7 @@ class TestRefoModule(unittest.TestCase):
         strxs = list(strregex.finditer(self.string))
         xs = [x.group("foobar") for x in xs]
         strxs = [x.span(1) for x in strxs]
-        self.assert_(xs == strxs)
+        self.assertEqual(xs, strxs)
 
     def test_match_path(self):
         seq = [[1, 2],     # x and y
@@ -147,7 +147,7 @@ class TestRefoModule(unittest.TestCase):
                []]
         regexptn = refo.Star(self.y) + refo.Plus(self.x + self.z)
         m = refomatch(regexptn, seq, keep_path=True)
-        self.assert_(isinstance(m, Match))
+        self.assertIsInstance(m, Match)
         path = m.get_path()
         self.assertEqual([4, 1, 9, 1, 9], path)
 
